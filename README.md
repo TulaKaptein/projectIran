@@ -19,12 +19,22 @@ To show different statistics about Iran to give the user a more correct view of
 Iran.
 
 ### Visual sketch:
-The visual sketch can be found in the doc folder.
+You can find a visual sketch in the doc folder.
+* Left, upper: a sketch of the sites pages and interactions.
+* Right, upper: an example of one of the graphs that would be on the Dashboard. Features of this graph would be:
+  * Showing information about the conflict/point of interest when hovering over a dot.
+  * Selecting which kinds of conflict are shown on the map
+* Left, down: an example of a bar graph. I would use such a graph to visualise the economic and social indicators. Features of this graph would be:
+  * Selecting the year you want visualised
+
+I'd also like to include line graphs, that, for example, interact with
+a bar graph, adding different dimensions to one dataset.
+
 ### Main features:
 #### 1: Minimum viable product
 + Add different filters to the data presented
-+ Show line/barcharts
-+ When datapoints are hovered, show the datavalue.
++ Show line/bar charts
++ When data points are hovered, show the data value.
 
 #### 2: Optional implementations
 + Compare data from Iran to data from Turkey
@@ -48,11 +58,11 @@ The visual sketch can be found in the doc folder.
 ### External components:
 Not clear yet.
 
-### Review of similar related visualizations:
-[This](https://www.acleddata.com/dashboard/#364) is a website that visualizes conflict situations in Middle-Eastern countries, such as Iran, with an interactive map, information, a line chart and a bar chart.
+### Review of similar related visualisations:
+[This](https://www.acleddata.com/dashboard/#364) is a website that visualises conflict situations in Middle-Eastern countries, such as Iran, with an interactive map, information, a line chart and a bar chart.
 
-I think this is a clear way to visualize the data, but I would like to make it more selective.
-The user should choose which data he/she wants visualized and that will
+I think this is a clear way to visualise the data, but I would like to make it more selective.
+The user should choose which data he/she wants visualised and that will
 determine the kind of chart that 'appears', instead of a page full of data visualisations.
 
 ### Hardest parts:
