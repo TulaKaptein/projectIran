@@ -1,6 +1,6 @@
 # Proposal
 
-Name: Tula Kaptein
+Name: Tula Kaptein  
 Student Number: 11013478
 
 ## Problem Statement:
