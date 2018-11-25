@@ -32,27 +32,18 @@ The visual sketch can be found in the doc folder.
 
 ## Prerequisites:
 ### Data sources:
-* Dataset that shows conflict situations in Iran:
-https://www.acleddata.com/data/
-* Datasets of economic and social indicators in Iran:
-https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/intro
-  * Population 1960-2017 https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=population-total-11.json
-  * GNI per capita ppp 1960-2017
-  https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gni-per-capita-ppp-current-international-6.json
-  * GDP per capita ppp 1960-2017
-  https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gdp-per-capita-ppp-current-international-2.json
-* Life expectancy at birth between 2000 and 2016
-https://data.humdata.org/dataset/who-data-for-iran-islamic-republic-of/resource/6bd6143d-f216-49ac-bffa-040578fbf2c5
+* [Dataset that shows conflict situations in Iran](https://www.acleddata.com/data/)
+
+  * [Datasets of economic and social indicators in Iran](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/intro)
+  * [Population 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=population-total-11.json)
+  * [GNI per capita ppp 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gni-per-capita-ppp-current-international-6.json)
+  * [GDP per capita ppp 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gdp-per-capita-ppp-current-international-2.json)
+* [Life expectancy at birth between 2000 and 2016](https://data.humdata.org/dataset/who-data-for-iran-islamic-republic-of/resource/6bd6143d-f216-49ac-bffa-040578fbf2c5)
 * Literacy in Iran
-* Conflict data in Iran 2016-2018
-https://data.humdata.org/dataset/acled-data-for-iran-islamic-republic-of
-* Population growth
-* Points of interest in Iran
-https://data.humdata.org/dataset/hotosm_irn_points_of_interest
-* Education finances 1971 till 2017
-https://data.humdata.org/dataset/unesco-indicators-for-iran-islamic-republic-of
-* Datasets of economic and social indicators in Turkey 1970 till 2017
-https://data.humdata.org/dataset/world-bank-indicators-for-turkey
+* [Conflict data in Iran 2016-2018](https://data.humdata.org/dataset/acled-data-for-iran-islamic-republic-of)
+* [Points of interest in Iran](https://data.humdata.org/dataset/hotosm_irn_points_of_interest)
+* [Education finances 1971 till 2017](https://data.humdata.org/dataset/unesco-indicators-for-iran-islamic-republic-of)
+* [Datasets of economic and social indicators in Turkey 1970 till 2017](https://data.humdata.org/dataset/world-bank-indicators-for-turkey)
 
 ### External components:
 Not clear yet.
