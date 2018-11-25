@@ -39,7 +39,7 @@ The visual sketch can be found in the doc folder.
   * [GNI per capita ppp 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gni-per-capita-ppp-current-international-6.json)
   * [GDP per capita ppp 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gdp-per-capita-ppp-current-international-2.json)
 * [Life expectancy at birth between 2000 and 2016](https://data.humdata.org/dataset/who-data-for-iran-islamic-republic-of/resource/6bd6143d-f216-49ac-bffa-040578fbf2c5)
-* Literacy in Iran
+* [Literacy in Iran](https://data.worldbank.org/indicator/SE.ADT.LITR.ZS?view=chart)
 * [Conflict data in Iran 2016-2018](https://data.humdata.org/dataset/acled-data-for-iran-islamic-republic-of)
 * [Points of interest in Iran](https://data.humdata.org/dataset/hotosm_irn_points_of_interest)
 * [Education finances 1971 till 2017](https://data.humdata.org/dataset/unesco-indicators-for-iran-islamic-republic-of)
@@ -49,9 +49,11 @@ The visual sketch can be found in the doc folder.
 Not clear yet.
 
 ### Review of similar related visualizations:
-This is a website that visualizes conflict situations in Middle-Eastern countries, such as Iran, with an interactive map, information, a line chart and a bar chart.
-https://www.acleddata.com/dashboard/#364
-I think this is a clear way to visualize the data, but I would like to make it more selective. The user should choose which data he/she wants visualized and that will determine the kind of chart that 'appears', instead of a page full of data visualisations.
+[This](https://www.acleddata.com/dashboard/#364) is a website that visualizes conflict situations in Middle-Eastern countries, such as Iran, with an interactive map, information, a line chart and a bar chart.
+
+I think this is a clear way to visualize the data, but I would like to make it more selective.
+The user should choose which data he/she wants visualized and that will
+determine the kind of chart that 'appears', instead of a page full of data visualisations.
 
 ### Hardest parts:
 Not clear yet.
