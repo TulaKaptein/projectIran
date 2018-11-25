@@ -19,7 +19,7 @@ To show different statistics about Iran to give the user a more correct view of
 Iran.
 
 ### Visual sketch:
-You can find a visual sketch in the doc folder.
+![](doc/visualSketch.png)
 * Left, upper: a sketch of the sites pages and interactions.
 * Right, upper: an example of one of the graphs that would be on the Dashboard. Features of this graph would be:
   * Showing information about the conflict/point of interest when hovering over a dot.
