@@ -5,18 +5,14 @@ Student Number: 11013478
 
 ## Problem Statement:
 ### Problem:
-Iran has a beautiful and rich history, which makes it a very interesting country
-for travelling purposes. Unfortunately, it is not perceived this way because of
-the strict religious rules that were implemented when Iran became an Islamic
-Republic.
+It is uncertain how the amount of Nobel prize winners per country over the years correlates to the population of that country and the education quality of that country. Furthermore, there are very few female Nobel prize winners and a possible correlation could be found in the education equity.
 
 ### Target audience:
-People with an interest in the Middle East.
+People with an interest in Nobel prize winners and education quality and equity.
 
 ## Solution:
 ### Idea:
-To show different statistics about Iran to give the user a more correct view of
-Iran.
+To show an interactive world map visualizing the amount of Nobel prize winners per year, which will be linked to several charts showing population, education indicators and education equity indicators.
 
 ### Visual sketch:
 ![](doc/visualSketch.png)
@@ -32,38 +28,31 @@ a bar graph, adding different dimensions to one dataset.
 
 ### Main features:
 #### 1: Minimum viable product
-+ Add different filters to the data presented
-+ Show line/bar charts
++ A world map with the amount of nobel prize winners per country
++ The possibility to select a certain year for the world map
++ Show the division over the different fields of the Nobel Prize (chemistry, physics etc.)
++ Show line/bar charts with education indicators and population per country selected.
 + When data points are hovered, show the data value.
 
 #### 2: Optional implementations
-+ Compare data from Iran to data from Turkey
-+ Make an interactive map of Iran that shows touristic attractions per city/province.
++ Possibility of filtering the data in the world map by field of Nobel prize and gender.
++ Show line/bar charts with edcuation equity indicators.
 
 ## Prerequisites:
 ### Data sources:
-* [Dataset that shows conflict situations in Iran](https://www.acleddata.com/data/)
 
-  * [Datasets of economic and social indicators in Iran](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/intro)
-  * [Population 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=population-total-11.json)
-  * [GNI per capita ppp 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gni-per-capita-ppp-current-international-6.json)
-  * [GDP per capita ppp 1960-2017](https://data.world/hdx/e2596787-a8e5-4b29-8527-57e77817c4ce/workspace/file?filename=gdp-per-capita-ppp-current-international-2.json)
-* [Life expectancy at birth between 2000 and 2016](https://data.humdata.org/dataset/who-data-for-iran-islamic-republic-of/resource/6bd6143d-f216-49ac-bffa-040578fbf2c5)
-* [Literacy in Iran](https://data.worldbank.org/indicator/SE.ADT.LITR.ZS?view=chart)
-* [Conflict data in Iran 2016-2018](https://data.humdata.org/dataset/acled-data-for-iran-islamic-republic-of)
-* [Points of interest in Iran](https://data.humdata.org/dataset/hotosm_irn_points_of_interest)
-* [Education finances 1971 till 2017](https://data.humdata.org/dataset/unesco-indicators-for-iran-islamic-republic-of)
-* [Datasets of economic and social indicators in Turkey 1970 till 2017](https://data.humdata.org/dataset/world-bank-indicators-for-turkey)
+* [Two datasets: 1) list of all Nobel prizes and 2) list of all Nobel prize winners](https://data.world/sya/nobel-prize-winners/workspace/file?filename=nobel_prize_by_winner.csv )
+
+* [Population per country (1960-2017)](https://data.worldbank.org/indicator/SP.POP.TOTL)
+
+* [Education quality and equity indicators](https://databank.worldbank.org/Data/indicator/SE.PRM.TENR?id=c755d342&report_name=EdStats_Indicators_Report&populartype=series#)
 
 ### External components:
-Not clear yet.
+* d3
+* d3-tip
 
 ### Review of similar related visualisations:
-[This](https://www.acleddata.com/dashboard/#364) is a website that visualises conflict situations in Middle-Eastern countries, such as Iran, with an interactive map, information, a line chart and a bar chart.
-
-I think this is a clear way to visualise the data, but I would like to make it more selective.
-The user should choose which data he/she wants visualised and that will
-determine the kind of chart that 'appears', instead of a page full of data visualisations.
+[This](https://www.kalinax.com/nobel-prize-winners.html) is a website that visualises Nobel prize winners per country and over time, but the data isn't correlated with anything yet. I would like to use this example to make a world map and the possibility to 'slide through the years', but I'd add another variable: population to be able to say something about the difference in amount of nobel prizes.
 
 ### Hardest parts:
-Not clear yet.
+* To find a way to correlate the Nobel prize data with other data sets (the timelines of other datasets are usually shorter)
