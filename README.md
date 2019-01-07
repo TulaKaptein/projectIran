@@ -16,15 +16,9 @@ To show an interactive world map visualizing the amount of Nobel prize winners p
 
 ### Visual sketch:
 ![](doc/visualSketch.png)
-* Left, upper: a sketch of the sites pages and interactions.
-* Right, upper: an example of one of the graphs that would be on the Dashboard. Features of this graph would be:
-  * Showing information about the conflict/point of interest when hovering over a dot.
-  * Selecting which kinds of conflict are shown on the map
-* Left, down: an example of a bar graph. I would use such a graph to visualise the economic and social indicators. Features of this graph would be:
-  * Selecting the year you want visualised
-
-I'd also like to include line graphs, that, for example, interact with
-a bar graph, adding different dimensions to one dataset.
+* Left, upper: a sketch of the sites pages and interactions. I want to start with introducing a few Nobel Prize winners, then make a transition to the 'dashboard'. The dashboard will show the interactive graphs and charts. There will be an option on the page to click on 'about', which will show another page or preferably a pop up with information about the data and graphs. 
+* Right, upper: a pie chart could be used to show the different fields of the nobel prizes won in a certain year, but a sunburst chart could show the different fields and the nationality and gender at the same time.
+* Left, down: an example of a line graph, which would be used to show the population growth over the years.
 
 ### Main features:
 #### 1: Minimum viable product
