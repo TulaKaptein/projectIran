@@ -5,7 +5,7 @@ Student Number: 11013478
 
 ## Problem Statement:
 ### Problem:
-It is uncertain how the amount of Nobel prize winners per country over the years correlates to the population of that country and the education quality of that country. Furthermore, there are very few female Nobel prize winners and a possible correlation could be found in the education equity.
+It is uncertain how the amount of Nobel prize winners per country over the years correlates to the education quality of that country. Furthermore, there are very few female Nobel prize winners and a possible correlation could be found in the education equity.
 
 ### Target audience:
 People with an interest in Nobel prize winners and education quality and equity.
@@ -15,10 +15,10 @@ People with an interest in Nobel prize winners and education quality and equity.
 To show an interactive world map visualizing the amount of Nobel prize winners per year, which will be linked to several charts showing population, education indicators and education equity indicators.
 
 ### Visual sketch:
-![](doc/visualSketch.png)
-* Left, upper: a sketch of the sites pages and interactions. I want to start with introducing a few Nobel Prize winners, then make a transition to the 'dashboard'. The dashboard will show the interactive graphs and charts. There will be an option on the page to click on 'about', which will show another page or preferably a pop up with information about the data and graphs. 
+![](doc/visualSketch1.png)
+* Left, upper: a sketch of the sites pages and interactions. I want to start with introducing a few Nobel Prize winners, then make a transition to the 'dashboard'. The dashboard will show the interactive graphs and charts. There will be an option on the page to click on 'about', which will show another page or preferably a pop up with information about the data and graphs.
 * Right, upper: a pie chart could be used to show the different fields of the nobel prizes won in a certain year, but a sunburst chart could show the different fields and the nationality and gender at the same time.
-* Left, down: an example of a line graph, which would be used to show the population growth over the years.
+* Left, down: an example of a line graph, which would be used to show the educational indicators over the years.
 
 ### Main features:
 #### 1: Minimum viable product
