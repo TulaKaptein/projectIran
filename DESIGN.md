@@ -17,9 +17,12 @@ Some parts that you should describe here:
 All datasources below were attained in .json format or converted from .csv to .json files. All .json files have
 been tested on validity.
 
-* [World map](link)
+* [World map](http://bl.ocks.org/micahstubbs/raw/8e15870eb432a21f0bc4d3d527b2d14f/a45e8709648cafbbf01c78c76dfa53e31087e713/world_countries.json)
+* [Nobel prizes](https://data.world/sya/nobel-prize-winners/workspace/file?filename=nobel_prize_by_winner.csv )
+  * Nobel prizes per winner
+  * Nobel prizes over time
 * [Population per country](https://data.worldbank.org/indicator/SP.POP.TOTL)
-* [Female percentage of population per country](https://data.worldbank.org/indicator/SP.POP.TOTL.FE.ZS)
+* [Female population per country (%)](https://data.worldbank.org/indicator/SP.POP.TOTL.FE.ZS)
 * Primary education enrolment (gross)
   * [Total](https://data.worldbank.org/indicator/SE.PRM.ENRR)
   * [Female](https://data.worldbank.org/indicator/SE.PRM.ENRR.FE)
