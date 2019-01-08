@@ -1,12 +1,3 @@
-For this deadline, you must prove that you have access to the data in a usable format!
-
-Some parts that you should describe here:
-
-* a list of data sources if you will get data from an external source, including information on how your are going to filter and transform the data for your project
-
-* a diagram with an overview of the technical components of your app (visualizations, scraper etc etc)
-
-* as well as descriptions of each of the components and what you need to implement these
 
 * a list of APIs or D3 plugins that you will be using to provide functionality in your app
 
@@ -43,6 +34,7 @@ to .json files. All .json files have been tested on validity.
 
 ## Technical components
 ![](doc/visualSketch.png)
+
 The project will have three 'pages'. It will start with an introduction to some
 Nobel Prize winners followed by a question (for example: How are Nobel Prize
 winners divided over the world?). Then the user will be directed to the
@@ -52,22 +44,34 @@ and the purpose of the data visualisations.
 
 * World map graph
   * Showing all countries
-  * Showing the amount of Nobel Prize Winners by using points
-  * Showing population by using shading
+  * Showing the amount of Nobel Prize Winners by using shading
   * Possibility of selecting a certain year (or range of years)
   * Possibility of clicking on a country
-  * Possibility of clicking on a point
   * Possibility of hovering over a country, visualizing the amount of Nobel
-  prize winners and the population (?) in the year: ..
+  prize winners
+
+Needed:
+* world.json file with the coordinates of the countries
+* dataset with the Nobel Prize Winners
+* function to calculate the amount of Nobel Prize Winners with the following filters: year, country, category.
 
 * Pie chart
   * When a country is clicked a pie chart reveals the different categories of
   the Nobel prizes
-  * Hovering shows amount per category (?)
+  * Hovering shows amount per category
+  * Clicking on a category updates the world map graph to just showing that category
+
+Needed:
+* dataset with the Nobel Prize Winners
+* function to calculate the amount of Nobel Prize Winners with the following filters: year, country, category.
 
 * Line graph
-  * Showing primary education enrolment, secondary education enrolment, tertiary education enrolment and doctoral or equivalent attainment.
+  * Showing primary, secondary and tertiary school enrolment
+
+Needed:
+* datasets with the data for the primary, secondary and tertiary school enrolment
 
 ## API's / D3 plugins
 
-????
+* D3-tip
+* topojson 
