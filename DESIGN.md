@@ -1,6 +1,3 @@
-
-* a list of APIs or D3 plugins that you will be using to provide functionality in your app
-
 # Design
 
 ## Data sources
@@ -50,10 +47,10 @@ and the purpose of the data visualisations.
   * Possibility of hovering over a country, visualizing the amount of Nobel
   prize winners
 
-Needed:
-* world.json file with the coordinates of the countries
-* dataset with the Nobel Prize Winners
-* function to calculate the amount of Nobel Prize Winners with the following filters: year, country, category.
+    Needed:
+    * world.json file with the coordinates of the countries
+    * dataset with the Nobel Prize Winners
+    * function to calculate the amount of Nobel Prize Winners with the following filters: year, country, category.
 
 * Pie chart
   * When a country is clicked a pie chart reveals the different categories of
@@ -61,17 +58,17 @@ Needed:
   * Hovering shows amount per category
   * Clicking on a category updates the world map graph to just showing that category
 
-Needed:
-* dataset with the Nobel Prize Winners
-* function to calculate the amount of Nobel Prize Winners with the following filters: year, country, category.
+    Needed:
+    * dataset with the Nobel Prize Winners
+    * function to calculate the amount of Nobel Prize Winners with the following filters: year, country, category.
 
 * Line graph
   * Showing primary, secondary and tertiary school enrolment
 
-Needed:
-* datasets with the data for the primary, secondary and tertiary school enrolment
+    Needed:
+    * datasets with the data for the primary, secondary and tertiary school enrolment
 
 ## API's / D3 plugins
 
 * D3-tip
-* topojson 
+* topojson
