@@ -14,3 +14,9 @@ Which is why I decided to see the country of birth as the country the Nobel priz
 Progress: my world map is now shaded and my dataset is complete and correct.
 
 ## day 2 (10/1/2019)
+
+Today I wanted to make the different pages for my project, connect them and start with the pie chart.
+I succeeded making the pages and connecting them and making the pie chart. I haven't succeeded being able to update
+the pie chart by clicking on a country yet.
+
+Progress: the website has three different pages and a pie chart.
