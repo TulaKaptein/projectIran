@@ -129,22 +129,27 @@ function main (response){
   g.append("path")
    .attr("d", arc)
    .style("fill", function(d,i){ return colorDonut(i)})
-   .on('mouseover', function(d){
-     tipDonut.show(d);
+   .transition()
+   .ease(d3.easeLinear)
+   .duration(2000)
+   .attrTween("d", pieTween)
 
-     d3.select(this)
-       .style("stroke", "white")
-       .style("stroke-width", 3)
-       .style("opacity", 0.8)
-   })
-   .on("mouseout", function(d){
-     tipDonut.hide(d);
-
-     d3.select(this)
-       .style("stroke", "white")
-       .style("stroke-width", 0)
-       .style("opacity", 1)
-   })
+  // g.on('mouseover', function(d){
+  //    tipDonut.show(d);
+  //
+  //    d3.select(this)
+  //      .style("stroke", "white")
+  //      .style("stroke-width", 3)
+  //      .style("opacity", 0.8)
+  //  })
+  //  .on("mouseout", function(d){
+  //    tipDonut.hide(d);
+  //
+  //    d3.select(this)
+  //      .style("stroke", "white")
+  //      .style("stroke-width", 0)
+  //      .style("opacity", 1)
+  //  })
 
   g.append("text")
    .attr("transform", function(d){ return "translate(" + arcLabel.centroid(d) + ")"})
@@ -207,7 +212,11 @@ function main (response){
 
  }
 
-
+ function pieTween(b){
+   b.innerRadius = 0;
+   var i = d3.interpolate({startAngle:0, endAngle:0}, b);
+   return function(t){ return arc(i(t));};
+ }
  function fillDict(dict){
    for (country in countries.features){
      // console.log(countries.features[country].properties.name)
