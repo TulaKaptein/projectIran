@@ -1,5 +1,5 @@
 <!-- Name: Tula Kaptein
-Sutdentnumber: 11013478 -->
+Studentnumber: 11013478 -->
 
 <!DOCTYPE html>
 <html>
@@ -8,12 +8,12 @@ Sutdentnumber: 11013478 -->
     <title>Project</title>
     <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
     <!-- <script type="text/javascript" src="project.js"></script> -->
-    <script type="text/javascript" src="includeHTML.js"></script>
-    <link rel="stylesheet" href="project.css">
+    <script type="text/javascript" src="plug-ins/includeHTML.js"></script>
+    <link rel="stylesheet" href="stylesheet/project.css">
   </head>
   <body>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <script src="d3-tip.js"></script>
+    <script src="plug-ins/d3-tip.js"></script>
 
     <div w3-include-html="navigationBar.html"></div>
     <script>
@@ -29,11 +29,20 @@ Sutdentnumber: 11013478 -->
       Student Number: 11013478
     </p>
     <h3>
-      Description of dataset and visualization
+      Description of visualization
     </h3>
     <p>
-      This interactive world map shows the amount of Nobel prize winners per country. By
-      clicking on a country, you can see the pie chart change from visualizing the whole world to a certain country. 
+      The first graph you see is an interactive world map, which shows the amount of Nobel prize winners per country.
+      To calculate these amounts the country of birth of the Nobel prize winner was seen
+      as the country the Nobel prize 'belongs to'.
+    </p>
+    <p>
+      The second graph you see is a pie chart, which shows the amount of Nobel prize winners per
+      category. When a certain country in the world map is clicked, this chart will update to show the Nobel prizes
+      for that specific country.
+    </p>
+    <p>
+      The third graph you see is a line graph, which shows...
     </p>
   </body>
 </html>
