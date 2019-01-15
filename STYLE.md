@@ -20,3 +20,11 @@ Rules:
 8. Each method should be on its own indented line.
 9. If possible, a variable should have a self-explanatory name. If not, variables should have logical names.
 10. More complex functions should have a name and should be placed just before the closing bracket.
+
+Sources:
+
+[Source](https://www.w3schools.com/js/js_conventions.asp)
+
+We agree with all rules, except for the lower case file names. We all use lower case if possible, but otherwise we use camelCase for our file names.
+
+The rest of the rules we thought of ourselves.
