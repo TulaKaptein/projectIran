@@ -33,13 +33,12 @@ Progress: the donut chart updates when a country is clicked, a legend was added.
 
 ## day 5 (15/1/2019)
 
-Done:
-- bootstrap
+Today I implemented bootstrap to give my webpage a better lay out.
 
 To do:
 
 - comments toevoegen
 - bij 0 Nobel prijs winnaars aparte kleur kiezen voor wereldkaart
-
+- zorgen dat de update functie weer werkt
 - make tip that works for the donut chart (with updating)
 - make a line chart for the education indicators per country
