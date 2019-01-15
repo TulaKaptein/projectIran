@@ -29,13 +29,17 @@ Absent.
 
 Today I encountered some problems with updating my donut chart, because of the different parts (arc & pie). But fortunately I managed to in the end. However, the tooltip that I used (d3-tip) didn't update with the data.
 
-Progress: the donut chart updates when a country is clicked, a legend was added. 
+Progress: the donut chart updates when a country is clicked, a legend was added.
 
 ## day 5 (15/1/2019)
+
+Done:
+- bootstrap
 
 To do:
 
 - comments toevoegen
-- bootstrap
+- bij 0 Nobel prijs winnaars aparte kleur kiezen voor wereldkaart
+
 - make tip that works for the donut chart (with updating)
 - make a line chart for the education indicators per country

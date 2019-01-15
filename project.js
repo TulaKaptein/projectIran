@@ -6,10 +6,14 @@ var world = "data/worldFile.json"
 var population = "data/population.json"
 var nobelPrizes = "data/nobelPrizesByDate.json"
 var nobelWinners = "data/nobelPrizeWinners.json"
+var primaryEduc = "data/primaryGross.json"
+var secondEduc = "data/secondaryGross.json"
+var tertEduc = "data/tertiaryGross.json"
 
 // Load in the data files
 window.onload = function() {
-  var requests = [d3.json(world), d3.json(population), d3.json(nobelPrizes), d3.json(nobelWinners)];
+  var requests = [d3.json(world), d3.json(population), d3.json(nobelPrizes), d3.json(nobelWinners),
+  d3.json(primaryEduc), d3.json(secondEduc), d3.json(tertEduc)];
 
   Promise.all(requests).then(function(response) {
       main(response);
@@ -27,6 +31,9 @@ function main (response){
   var population = response[1]
   var nobelPrizes = response[2]
   var nobelWinners = response[3]
+  var primEduc = response[4]
+  var secEduc = response[5]
+  var tertEduc = response[6]
 
   // Preprocess the data for the world graph
   var data = {}
@@ -34,9 +41,9 @@ function main (response){
   addData(data)
 
   // Set the margin for the world graph
-  var marginWorld = {top: 10, right: 40, bottom: 10, left:40},
-                widthWorld = 1300 - marginWorld.left - marginWorld.right,
-                heightWorld = 700 - marginWorld.top - marginWorld.bottom;
+  var marginWorld = {top: 40, right: 40, bottom: 10, left:0},
+                widthWorld = 800 - marginWorld.left - marginWorld.right,
+                heightWorld = 610 - marginWorld.top - marginWorld.bottom;
   var domainWorld = ["0", "1", "2 to 5", "5 to 10", "10 to 20", "20 to 50", "50 to 100", "100 to 200", "More than 200"]
 
   // Set the colors and the domain for the world graph
@@ -47,12 +54,14 @@ function main (response){
   var path = d3.geoPath();
 
   // Set svg for the world map
-  var world = d3.select("body")
+  var world = d3.select("#row1")
                 .append("svg")
                 .attr("width", widthWorld)
                 .attr("height", heightWorld)
-                .append("g")
-                .attr("class", "map");
+                // .append("g")
+                .attr("class", "map")
+                // .attr("transform", "translate(0," + marginWorld.top + ")");
+
   makeWorldLegend(domainWorld, colors);
 
   // Draw world map
@@ -87,9 +96,9 @@ function main (response){
 
   // Set the measurements for the donut chart
   var marginDonut = {top: 10, right: 10, bottom: 10, left: 10},
-        widthDonut = 960 - marginDonut.left - marginDonut.right,
+        widthDonut = 600 - marginDonut.left - marginDonut.right,
         heightDonut = 500 - marginDonut.top - marginDonut.bottom,
-        radiusDonut = Math.min(widthDonut, heightDonut)/2;
+        radiusDonut = Math.min(widthDonut, heightDonut)/2 - 50;
 
   // Arc generator
   var arc = d3.arc()
@@ -109,19 +118,20 @@ function main (response){
               .sort(null);
 
   // Set svg for donut chart
-  var donutChart = d3.select("body").append("svg")
+  var donutChart = d3.select("#row1").append("svg")
                      .attr("width", widthDonut)
                      .attr("height", heightDonut)
                      .append("g")
                      .attr("class", "donut")
-                     .attr("transform", "translate(" + widthDonut/2 + "," + heightDonut/2 + ")");
+                     .attr("transform", "translate(" + 230 + "," + heightDonut/2 + ")");
+
   var colorsDonut = ['rgb(118,42,131)','rgb(175,141,195)','rgb(231,212,232)','rgb(217,240,211)','rgb(127,191,123)','rgb(27,120,55)']
   var domainDonut = ["economics", "chemistry", "physics", "peace", "literature", "medicine"]
   var colorDonut = d3.scaleOrdinal(colorsDonut);
 
   var donutTitle = donutChart.append("text")
                              .attr("class", "graph-title")
-                             .attr("x", 0)
+                             .attr("x", 50)
                              .attr("y", 0)
                              .attr("text-anchor", "middle")
                              .text("Total")
@@ -137,19 +147,59 @@ function main (response){
 
   makeDonutLegend(colorsDonut, domainDonut)
 
+  var marginLine = {top: 10, right: 10, bottom: 10, left: 50},
+    width = 1200 - marginLine.left - marginLine.right,
+    height = 400 - marginLine.bottom - marginLine.top;
+
+  var lineChart = d3.select("#lineChart").append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .append("g")
+                    .attr("transform", "translate(" + marginLine.left + "," + marginLine.top + ")")
+  var xScale = d3.scaleLinear().range([0, width]);
+  var yScale = d3.scaleLinear().range([height, 0]);
+
+  var data = collectData("Netherlands")
+  console.log(data)
+
+  makeAxes(data)
+
+  var line1 = d3.line()
+               .x(function(d){return xScale(d.year)})
+               .y(function(d){return yScale(d.primEduc)})
+  var line2 = d3.line()
+                .x(function(d){return xScale(d.year)})
+                .y(function(d){return yScale(d.secEduc)})
+
+  lineChart.append("path")
+           .data([data])
+           .attr("class", "line")
+           .attr("id", "primEduc")
+           .attr("d", line1)
+           .attr("stroke", "black")
+           .attr("fill", "none")
+           .attr("transform", "translate(" + marginLine.left + ", 0)")
+
+ lineChart.append("path")
+          .data([data])
+          .attr("class", "line")
+          .attr("id", "secEduc")
+          .attr("d", line2)
+          .attr("stroke", "blue")
+          .attr("fill", "none")
+          .attr("transform", "translate(" + marginLine.left + ", 0)")
+
+
   var g = donutChart.selectAll(".arc")
              .data(pie(dictCategories))
              .enter()
              .append("g")
-             .attr("class", "arc");
+             .attr("class", "arc")
+             .attr("transform", "translate(50,0)");
 
   g.append("path")
    .attr("d", arc)
    .style("fill", function(d,i){ return colorDonut(i)})
-   // .transition()
-   // .ease(d3.easeLinear)
-   // .duration(2000)
-   // .attrTween("d", pieTween)
 
   g.on('mouseover', function(d){
      tipDonut.show(d);
@@ -168,14 +218,9 @@ function main (response){
        .style("opacity", 1)
    })
 
-  // g.append("text")
-  //  .attr("transform", function(d){ return "translate(" + arcLabel.centroid(d) + ")"})
-  //  .attr("dy", ".35em")
-  //  .attr("text-anchor", "middle")
-  //  .text(function(d,i){ return dictCategories[i].category});
-
   world.append("g")
        .attr("class", "countries")
+       .attr("transform", "translate(40,40)")
        .selectAll("path")
        .data(countries.features)
        .enter().append("path")
@@ -204,10 +249,6 @@ function main (response){
          return clickCountry(d.properties.name, donutChart)
        })
 
-  // world.append("path")
-  //       .datum(topojson.mesh(countries.features, function(a, b) { return a.id !== b.id; }))
-  //       .attr("class", "names")
-  //       .attr("d", path);
 
  function clickCountry(country, donutChart){
    categoriesDict = makeCategoriesDict()
@@ -258,14 +299,17 @@ function main (response){
 
  function makeDonutLegend(colors, domain){
 
+   var legendDonut = donutChart.append("g")
+                               .attr("transform", "translate(20,0)")
+
    // Make a title
-   donutChart.append("text")
+   legendDonut.append("text")
         .attr("class", "legendTitle")
-        .attr("x", 300)
+        .attr("x", -220)
         .attr("y", -200)
         .text("Categories")
 
-   donutChart.selectAll(".legendPoint")
+   legendDonut.selectAll(".legendPoint")
              .data(colors)
              .enter()
             .append("rect")
@@ -273,19 +317,19 @@ function main (response){
             .attr("fill", function(d){
               return d;
             })
-            .attr("x", 300)
+            .attr("x", -220)
             .attr("y", function(d, i){
               return -190 + 20*i;
             })
             .attr("height", 18)
             .attr("width", 18)
 
-   donutChart.selectAll(".legendText")
+   legendDonut.selectAll(".legendText")
              .data(domain)
              .enter()
              .append("text")
              .attr("class", "legendText")
-             .attr("x", 325)
+             .attr("x", -195)
              .attr("y", function(d, i){
                return -190 + 14 + 20*i;
              })
@@ -320,15 +364,18 @@ function main (response){
  }
 
  function makeWorldLegend(domain, colors){
+
+   var legendWorld = world.append("g")
+                     .attr("transform", "translate(20,0)")
    // Make a title
-   world.append("text")
+   legendWorld.append("text")
         .attr("class", "legendTitle")
-        .attr("x", 800 - 20)
-        .attr("y", marginWorld.top + 20)
+        .attr("x", 0)
+        .attr("y", marginWorld.top)
         .text("Amount of Nobel prize winners")
 
    // Make the colored rectangles
-   world.selectAll("legendPoint")
+   legendWorld.selectAll("legendPoint")
       .data(colors)
       .enter()
       .append("rect")
@@ -336,26 +383,68 @@ function main (response){
       .attr("fill", function(d){
         return d;
       })
-      .attr("x", 800 - 20)
+      .attr("x", 0)
       .attr("y", function(d, i){
-        return marginWorld.top + 30 + 20*i;
+        return marginWorld.top + 10 + 20*i;
       })
       .attr("height", 18)
       .attr("width", 18)
 
    // Make the text for the legend
-   world.selectAll("legendText")
+   legendWorld.selectAll("legendText")
       .data(domain)
       .enter()
       .append("text")
       .attr("class", "legendText")
-      .attr("x", 805)
+      .attr("x", 25)
       .attr("y", function(d,i){
-        return marginWorld.top + 46 + 20*i;
+        return marginWorld.top + 25 + 20*i;
       })
       .text(function(d, i){
         return d;
       })
  }
+ function collectData(country){
+   var primEdCountry = primEduc[country]
+   var secEdCountry = secEduc[country]
+   var tertEdCountry = tertEduc[country]
+
+   data = []
+   for (year in primEdCountry){
+     if (primEdCountry[year] != null && secEdCountry[year] != null){
+       if (year == "Country Code"){
+         break
+       }
+       data.push({"year": year, "primEduc": primEdCountry[year], "secEduc": secEdCountry[year]})
+     }
+   }
+   return data
+ }
+ // Function that makes the axes
+ function makeAxes(data) {
+
+   // Scale the range of the data
+   xScale.domain(d3.extent(data, function(d) {
+     return d.year;
+   }));
+   maxY = d3.max(data, function(d){
+     return d.secEduc;
+   })
+   yScale.domain([0,Math.ceil(maxY/5)*5])
+
+   // Add the X Axis
+   lineChart.append("g")
+       .attr("transform", "translate(" + marginLine.left + "," + 300 + ")")
+       .attr("class", "x-axis")
+       .call(d3.axisBottom(xScale).tickFormat(d3.format('.4')))
+
+
+   // Add the Y Axis
+   lineChart.append("g")
+       .attr("transform", "translate(" + marginLine.left + ", 0)")
+       .attr("class", "y-axis")
+       .call(d3.axisLeft(yScale));
+
+   }
 
 }
