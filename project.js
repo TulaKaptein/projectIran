@@ -185,6 +185,21 @@ function main (response){
                .attr("d", lineWow)
                .attr("stroke", getColor(item))
                .attr("fill", "none")
+
+      lineChart.selectAll("point")
+               .data(data)
+               .enter()
+               .append("circle")
+               .attr("class", attributes[item])
+               .attr("cx", function(d){
+                 return xScale(d.year)
+               })
+               .attr("cy", function(d){
+                 return yScale(d[attributes[item]])
+               })
+               .attr("r", 1.5)
+               .attr("fill", getColor(item))
+
     }
   }
 
@@ -316,8 +331,6 @@ function main (response){
      .duration(1000)
      .call(d3.axisLeft(yScale));
 
-
-
    if (dataUpdate.length != 0){
      for (item in attributes){
        var lineWow = d3.line()
@@ -325,10 +338,31 @@ function main (response){
                        .y(function(d){return yScale(d[attributes[item]])})
 
        d3.select("#" + attributes[item])
-                .data([data])
+                .data([dataUpdate])
                 .transition()
                 .duration(1000)
                 .attr("d", lineWow)
+       var points = d3.select("." + attributes[item])
+                      .data(dataUpdate)
+
+       points.enter()
+         .append("circle")
+         .attr("r", 1.5)
+         .attr("fill", getColor(item))
+         .attr("cy", 0)
+         .attr("cx", 0)
+         .attr("class", attributes[item])
+         .merge(points)
+         .transition()
+         .duration(1000)
+         .ease(d3.easeQuadOut)
+         .attr("cx", function(d){
+           return xScale(d.year)
+         })
+         .attr("cy", function(d){
+           return yScale(d[attributes[item]])
+         })
+      points.exit().remove();
      }
 
    }

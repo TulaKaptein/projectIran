@@ -33,12 +33,16 @@ Progress: the donut chart updates when a country is clicked, a legend was added.
 
 ## day 5 (15/1/2019)
 
-Today I implemented bootstrap to give my webpage a better lay out.
+Today I implemented bootstrap to give my webpage a better lay out. I also made sure that every element has it's own svg, which consists of a g for the legend and a g for the actual graph. The donut chart shows the country name and if the country didn't win any Nobel prizes the donut chart disappears.
+
+## day 6 (16/1/2019)
+
+Today I made a line chart, which shows the primary, secondary and tertiary gross enrollment for a country that is clicked. The line chart also has dots for the exact datapoints, because some data misses a year or two. I just haven't been able to update the points yet.
+
+## day 7 (17/1/2019)
 
 To do:
 
 - comments toevoegen
-- bij 0 Nobel prijs winnaars aparte kleur kiezen voor wereldkaart
-- zorgen dat de update functie weer werkt
 - make tip that works for the donut chart (with updating)
-- make a line chart for the education indicators per country
+- make sure the dots in the line chart update too 
