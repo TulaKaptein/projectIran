@@ -41,9 +41,9 @@ Today I made a line chart, which shows the primary, secondary and tertiary gross
 
 ## day 7 (17/1/2019)
 
-Today I made a new tip for my donut chart and I started looking for data gaps for the line chart. I also added a title that updates when a country is selected. I added a legenda to the line chart. I also added buttons to change the world map between 'Total Nobel Prizes' and 'Nobel Prizes per Capita'
+Today I made a new tip for my donut chart and I started looking for data gaps for the line chart. I also added a title that updates when a country is selected. I added a legenda to the line chart. I also added buttons to change the world map between 'Total Nobel Prizes' and 'Nobel Prizes per Capita', but haven't included the update function yet. I also added a favicon for my website.
 
-Progress: All my graphs are implemented with the correct data. The links are also working. The tooltips for the world map and the donut chart also work.
+Progress: All my graphs are implemented with the correct data. The links are also working. The tooltips for the world map and the donut chart also work. A favicon was added. 
 
 ## day 8 (18/1/2019)
 
