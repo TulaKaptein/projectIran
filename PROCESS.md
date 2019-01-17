@@ -37,12 +37,20 @@ Today I implemented bootstrap to give my webpage a better lay out. I also made s
 
 ## day 6 (16/1/2019)
 
-Today I made a line chart, which shows the primary, secondary and tertiary gross enrollment for a country that is clicked. The line chart also has dots for the exact datapoints, because some data misses a year or two. I just haven't been able to update the points yet.
+Today I made a line chart, which shows the primary, secondary and tertiary gross enrolment for a country that is clicked. The line chart also has dots for the exact datapoints, because some data misses a year or two. The points and the lines update when a country is clicked.
 
 ## day 7 (17/1/2019)
+
+Today I made a new tip for my donut chart and I started looking for data gaps for the line chart. I also added a title that updates when a country is selected. I added a legenda to the line chart. I also added buttons to change the world map between 'Total Nobel Prizes' and 'Nobel Prizes per Capita'
+
+Progress: All my graphs are implemented with the correct data. The links are also working. The tooltips for the world map and the donut chart also work.
+
+## day 8 (18/1/2019)
 
 To do:
 
 - comments toevoegen
-- make tip that works for the donut chart (with updating)
-- make sure the dots in the line chart update too 
+- tooltip line implementeren voor de line chart.
+- link toevoegen bij de line chart, die een pie chart update met percentage jongens vs meisjes.
+- scatter plot voor aantal nobel prijzen vs population
+- ideeen zoeken via de voorbeelden gegeven door help@mprog

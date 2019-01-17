@@ -20,11 +20,16 @@ li a {
 
 li a:hover {
   background-color: rgb(35,139,69);
+  color: rgb(255, 255, 255);
 }
 
 .legendTitle {
   text-decoration: underline;
   font-size: 16px;
+}
+
+.title {
+  font-size: 20px;
 }
 
 .legendText {
@@ -94,4 +99,24 @@ stroke-linejoin: round;
     margin: -4px 0 0 -1px;
     top: 50%;
     left: 100%;
+  }
+
+  .tooltip {
+  	background: #eee;
+  	box-shadow: 0 0 5px #999999;
+  	color: #333;
+  	font-size: 12px;
+  	left: 130px;
+  	padding: 10px;
+  	position: absolute;
+  	text-align: center;
+  	top: 95px;
+  	width: 200px;
+  	z-index: 10;
+  	display: block;
+  	opacity: 0;
+  }
+
+  .button {
+    align-items: center;
   }
