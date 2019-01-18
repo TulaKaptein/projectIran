@@ -37,18 +37,28 @@ function main (response){
 
   // Preprocess the data for the world graph
   var dataWorld = {}
-  fillDict(dataWorld)
-  addData(dataWorld)
+  dataWorld = fillDict(dataWorld)
+  dataWorld = addData(dataWorld)
 
   // Preprocess the data for the updated world graph
-  dataWorldCapita = []
+  var dataWorldCapita = []
+  var dataWorldCapitaDict = {}
+  dataWorldCapitaDict = fillDict(dataWorldCapitaDict)
   for (country in dataWorld){
     for (item in population){
       if (country == item){
-          dataWorldCapita.push({"country": country, "population": population[item], "nobelPrizes per capita": dataWorld[country]/population[item][2017]})
+          dataWorldCapita.push({"country": country, "nobelPrizes per capita": dataWorld[country]/population[item][2017]})
       }
     }
   }
+  for (country in dataWorldCapitaDict){
+    for (item in dataWorldCapita){
+      if (dataWorldCapita[item].country == country){
+        dataWorldCapitaDict[country] = dataWorldCapita[item]["nobelPrizes per capita"]
+      }
+    }
+  }
+  console.log(dataWorldCapitaDict)
 
   // Make the buttons
   d3.select("#menu")
@@ -64,17 +74,6 @@ function main (response){
       return updateMap(d);
     })
 
-  function updateMap(category){
-    if (category == "Nobel Prizes per Capita"){
-      // update map to per capita
-      console.log(dataWorldCapita)
-    }
-    else {
-      // update map to total
-      console.log(dataWorld)
-    }
-  }
-
   // Set the margin for the world graph
   var marginWorld = {top: 40, right: 40, bottom: 10, left:0},
                 widthWorld = 800 - marginWorld.left - marginWorld.right,
@@ -82,11 +81,17 @@ function main (response){
   var domainWorld = ["0", "1", "2 to 5", "5 to 10", "10 to 20", "20 to 50", "50 to 100", "100 to 200", "More than 200"]
 
   // Set the colors and the domain for the world graph
-  var colors = ['rgb(128,128,128)','rgb(229,245,249)','rgb(204,236,230)','rgb(153,216,201)','rgb(102,194,164)','rgb(65,174,118)','rgb(35,139,69)','rgb(0,109,44)','rgb(0,68,27)']
+  var colorsWorld = ['rgb(128,128,128)','rgb(229,245,249)','rgb(204,236,230)','rgb(153,216,201)','rgb(102,194,164)','rgb(65,174,118)','rgb(35,139,69)','rgb(0,109,44)','rgb(0,68,27)']
   var colorWorld = d3.scaleThreshold()
                 .domain([1, 2, 5, 10, 20, 50, 100, 200])
-                .range(colors);
+                .range(colorsWorld);
   var path = d3.geoPath();
+
+  var domainWorldCapita = ["0", "0 to 1 in a billion", "1 to 5 in a billion", "5 to 10 in a billion", "10 to 50 in a billion","50 to 100 in a billion", "100 to 500 in a billion"]
+  var colorsWorldCapita = ['rgb(128,128,128)','rgb(224,236,244)','rgb(191,211,230)','rgb(158,188,218)','rgb(140,150,198)','rgb(140,107,177)','rgb(136,65,157)','rgb(129,15,124)','rgb(77,0,75)']
+  var colorWorldCapita = d3.scaleThreshold()
+                      .domain([1e-9, 0.5e-8, 1e-8, 0.5e-7, 1e-7, 0.5e-6, 1e-6, 0.2e-5])
+                      .range(colorsWorldCapita)
 
   // Set svg for the world map
   var world = d3.select("#row1")
@@ -95,7 +100,7 @@ function main (response){
                 .attr("height", heightWorld)
                 .attr("class", "map")
 
-  makeWorldLegend(domainWorld, colors);
+  makeWorldLegend(domainWorld, colorsWorld);
 
   // Draw world map
   var projection = d3.geoMercator()
@@ -105,6 +110,9 @@ function main (response){
 
   // Add data (amount of Nobel prize winners) to the world map
   countries.features.forEach(function(d) {d.nobelPrizeWinners = dataWorld[d.properties.name]})
+  countries.features.forEach(function(d) {d.nobelPrizeCapita = dataWorldCapitaDict[d.properties.name]})
+
+  console.log(countries)
 
   // Set tooltip for the world graph
   var tipWorld = d3.tip()
@@ -491,6 +499,29 @@ function main (response){
    }
 
  }
+ function updateMap(category){
+     if (category == "Nobel Prizes per Capita"){
+       // update map to per capita
+       d3.select(".countries")
+         .selectAll("path")
+         .data(countries.features)
+         .transition()
+         .duration(1000)
+         .style("fill", function(d){ return colorWorldCapita(d.nobelPrizeCapita)})
+       updateWorldLegend(colorsWorldCapita, domainWorldCapita, 'capita')
+
+     }
+     else {
+       // update map to total
+       d3.select(".countries")
+         .selectAll("path")
+         .data(countries.features)
+         .transition()
+         .duration(1000)
+         .style("fill", function(d){ return colorWorld(d.nobelPrizeWinners)})
+      updateWorldLegend(colorsWorld, domainWorld, 'total')
+     }
+ }
  function drawLines(data, attributes, colors){
    for (item in attributes){
      var lineWow = d3.line()
@@ -531,7 +562,7 @@ function main (response){
 
    var legendDonut = d3.select("#donutSVG")
                        .append("g")
-                       .attr("transform", "translate(20,0)")
+                       .attr("transform", "translate(20, 0)")
 
    // Make a title
    legendDonut.append("text")
@@ -577,12 +608,13 @@ function main (response){
  function fillDict(dict){
    for (country in countries.features){
      let countryCode = countries.features[country].properties.name
-     dataWorld[countryCode] = ""
+     dict[countryCode] = ""
    }
+   return dict
  }
 
  function addData(dict){
-   for (country in dataWorld){
+   for (country in dict){
      counter = 0;
      for (item in nobelWinners){
        let nobelWinnerCountry = nobelWinners[item].bornCountry;
@@ -592,6 +624,7 @@ function main (response){
      }
      dict[country] = counter
    }
+   return dict
  }
 
  function makeWorldLegend(domain, colors){
@@ -634,6 +667,52 @@ function main (response){
       .text(function(d, i){
         return d;
       })
+ }
+ function updateWorldLegend(colors, domain, category){
+   if (category == 'capita'){
+     d3.select(".legendTitle")
+                .text("Amount of Nobel prize winners per capita")
+
+     d3.select(".map")
+       .selectAll(".legendPoint")
+          .data(colors)
+          .transition()
+          .duration(1000)
+          .attr("fill", function(d){
+            return d;
+          })
+    d3.select(".map")
+      .selectAll(".legendText")
+      .data(domain)
+      .transition()
+      .duration(1000)
+      .text(function(d){
+        return d;
+      })
+   }
+   else {
+     d3.select(".legendTitle")
+                .text("Amount of Nobel prize winners")
+    d3.select(".map")
+      .selectAll(".legendPoint")
+         .data(colors)
+         .transition()
+         .duration(1000)
+         .attr("fill", function(d){
+           return d;
+         })
+     d3.select(".map")
+       .selectAll(".legendText")
+       .data(domain)
+       .transition()
+       .duration(1000)
+       .text(function(d){
+         return d;
+       })
+   }
+
+
+
  }
  function collectData(country){
    var primEdCountry = primEduc[country]
